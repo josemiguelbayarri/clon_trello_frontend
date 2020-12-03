@@ -1,0 +1,47 @@
+.welcome{
+    background-color: #1F72C1;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo{
+    margin-left: 1em;
+    color: white;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu p{
+    margin: 1em;
+    color: white;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin:4em auto;
+}
+
+.info_text{
+    padding: 2em;
+}
+
+.info_text_h2{
+    font-size: 40px;
+    color: white;
+}
+
+.info_text_h3{
+    color: white;
+    font-size: 20px;
+    margin-top: 1em;
+}
