@@ -1,0 +1,177 @@
+.register {
+    background-color: #F9FAFC;
+    width: 100%;
+    height: 100vh;
+}
+
+.logo_register {
+    display: flex;
+    justify-content: center;
+}
+
+.logo_register img {
+    width: 140px;
+    height: auto;
+    margin: 40px 0;
+}
+
+.cuerpo_register {
+    margin: 0 auto;
+    width: 25%;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    padding: 25px 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
+}
+
+.cuerpo_register h2 {
+    text-align: center;
+    color: #5E6C84;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.caja_register {
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    margin: 1em auto;
+}
+
+.caja_register input {
+    font-size: 14px;
+    background-color: #FAFBFC;
+    border: 2px solid #DFE1E6;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    height: 44px;
+    -webkit-transition: background-color .2s ease-in-out 0s, border-color .2s ease-in-out 0s;
+    transition: background-color .2s ease-in-out 0s, border-color .2s ease-in-out 0s;
+    margin-bottom: 15px;
+    padding: 1em;
+    color: #757575;
+}
+
+.caja_register button {
+    background-color: #5AAC44;
+    padding: .6em 1.3em;
+    position: relative;
+    text-decoration: none;
+    border: 0px;
+    display: inline-block;
+    font-weight: bold;
+    border-radius: .3em;
+    color: white;
+    cursor: pointer;
+    height: 44px;
+}
+
+.caja_register button:hover {
+    background-color: #61BD4F;
+    cursor: pointer;
+}
+
+.caja_register input:focus {
+    border-color: #4C9AFF;
+    outline: none;
+}
+
+.enlaces_register {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.enlaces_register a {
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.enlaces_register a:hover {
+    text-decoration: underline;
+}
+
+.footer_register {
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_register hr {
+    margin-top: 2em;
+    width: 100%;
+}
+
+.footer_register img {
+    width: 150px;
+    height: auto;
+    margin: 2em;
+}
+
+.miscelania {
+    text-align: center;
+    margin-top: .2em;
+}
+
+.miscelania a {
+    margin-right: 10px;
+    color: #5E6C84;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.miscelania a:hover {
+    text-decoration: underline;
+}
+
+.register_main {
+    position: relative;
+}
+
+.izq {
+    width: 400px;
+    height: 430px;
+    background-image: url(./fondo_login_1.png);
+    position: absolute;
+    bottom: 0;
+}
+
+.derecha {
+    width: 400px;
+    height: 430px;
+    background-image: url(./fondo_login_2.png);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.info_register {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5E6C84;
+}
+
+.info_register a {
+    text-decoration: none;
+    color: #0052CC;
+}
+
+.info_register a:hover{
+    text-decoration: underline;
+}
+
+
+
+.register_record {
+    text-decoration: none;
+    color: #0052CC;
+}

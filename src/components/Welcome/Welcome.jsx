@@ -1,17 +1,19 @@
 import React from "react";
 import "./Welcome.css";
-import portada from "./portada.png"; // with import
+import portada from "./portada.png";
+import logo from "./logo.png";
+import { Link } from "react-router-dom";
 
 function Welcome() {
   return (
     <div className="welcome">
-      <header>
-        <h1 className="titulo">trello</h1>
+      <nav className="menu_welcome">
+        <img src={logo} alt="logo"/>
         <div className="menu">
-          <p>Iniciar sesión</p>
-          <p>Registrarse</p>
+          <span className="menu_login"><Link to="/login">Iniciar sesión</Link></span>
+          <span className="menu_registro"><Link to="/register">Registrarse</Link></span>
         </div>
-      </header>
+      </nav>
       <body>
         <div className="main">
           <div className="info_text">
