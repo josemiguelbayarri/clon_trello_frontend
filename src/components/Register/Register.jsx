@@ -3,14 +3,21 @@ import "./Register.css";
 import logo_trello from "./logo_trello.png";
 import atlassian from "./atlassian-logo.png";
 import { Link } from "react-router-dom";
+import Axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 function Register() {
+
+    const history = useHistory()
 
     const [datos, setDatos] = useState({ 
         email: '', 
         name: '',
         password: '' 
      });
+
+    const [user, setUser] = useState('')
+
 
     const handleInputChange = (event) => {
         console.log(event.target.name)
@@ -30,7 +37,14 @@ function Register() {
             name: datos.name,
             password: datos.password 
         }
-        
+        Axios.post('http://localhost:3000/users/signup',user).then((res) => {
+            const user = res.data
+            console.log('usuario creado: ',user)
+            setUser(user)
+        });
+        setTimeout(() => {
+            history.push("/login")
+        }, 500);
     }
 
   return (
