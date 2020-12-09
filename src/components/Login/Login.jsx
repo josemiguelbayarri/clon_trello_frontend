@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import logo_trello from "./logo_trello.png";
 import atlassian from "./atlassian-logo.png";
 import { Link } from "react-router-dom";
+import Axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+  const history = useHistory();
+
+  const [datos, setDatos] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [user, setUser] = useState("");
+
+  const handleInputChange = (event) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(datos.email, datos.password);
+    const credentials = {
+      email: datos.email,
+      password: datos.password,
+    };
+    console.log("estas son las credenciales", credentials)
+    Axios.post("http://localhost:3000/users/login", credentials).then((res) => {
+      const user = res.data.user;
+      console.log("usuario logueado: ", user);
+      setUser(user);
+      localStorage.setItem('user', res.data.user[0]);
+
+      localStorage.setItem('authToken', res.data.token);
+    });
+    setTimeout(() => {
+     /*  history.push("/boards");  */
+    }, 500);
+  };
   return (
     <div className="login_main">
       <div className="izq"></div>
@@ -14,14 +55,14 @@ function Login() {
         </div>
         <div className="cuerpo_login">
           <h2>Iniciar sesión en Trello</h2>
-          <form className="formulario_login">
+          <form onSubmit={onSubmit} className="formulario_login">
             <div className="caja_login">
-              <input
+              <input onChange={handleInputChange}
                 placeholder="Introduzca el correo electrónico"
-                type="text"
+                type="text" name="email"
               />
-              <input placeholder="Introduzca la contraseña" type="password" />
-              <button>Iniciar sesión</button>
+              <input onChange={handleInputChange} placeholder="Introduzca la contraseña" type="password" name="password"/>
+              <button type="submit">Iniciar sesión</button>
             </div>
           </form>
           <hr />
