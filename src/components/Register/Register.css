@@ -138,7 +138,7 @@
 .izq {
     width: 400px;
     height: 430px;
-    background-image: url(./fondo_login_1.png);
+    background-image: url(../Images/fondo_login_1.png);
     position: absolute;
     bottom: 0;
 }
@@ -146,7 +146,7 @@
 .derecha {
     width: 400px;
     height: 430px;
-    background-image: url(./fondo_login_2.png);
+    background-image: url(../Images/fondo_login_2.png);
     position: absolute;
     bottom: 0;
     right: 0;

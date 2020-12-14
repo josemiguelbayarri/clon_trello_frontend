@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
-import logo_trello from "./logo_trello.png";
-import atlassian from "./atlassian-logo.png";
+import logo_trello from "../Images/logo_trello.png";
+import atlassian from "../Images/atlassian-logo.png";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";

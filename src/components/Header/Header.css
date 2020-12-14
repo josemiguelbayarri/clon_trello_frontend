@@ -19,7 +19,7 @@
     margin: 40px 0;
 }
 
-.left{
+.left, .right{
     display: flex;
     align-items: center;
     height: 40px;
@@ -44,4 +44,16 @@
     background-color: #3588b9;
     transition: 300ms;
 }
+
+.icons_image{
+    width: 40%;
+}
+
+.icons_image img{
+    border-radius: 100%;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+
 
