@@ -1,0 +1,47 @@
+.boards{
+    background-color: #FAFBFC;
+    width: 100%;
+    height: 100vh;
+}
+
+.cabecera{
+    width: 100%;
+    height: 40px;
+    background-color: #026AA7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_login img{
+    width: 140px;
+    height: auto;
+    margin: 40px 0;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    color: white;
+}
+
+.icons{
+    background-color: #67A6CA;
+    margin: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 7px;  
+    display: flex;
+}
+
+.icon_title{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.icons:hover{
+    background-color: #3588b9;
+    transition: 300ms;
+}
+
