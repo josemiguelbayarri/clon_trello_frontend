@@ -41,7 +41,7 @@ function Login() {
         /* const email = localStorage.getItem("email", user.email); */
   
         /* history.push(`/` + {email} + `/boards`); */
-        history.push("/header");
+        history.push("/boards");
       }, 500);
     });
   };

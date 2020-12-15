@@ -5,9 +5,25 @@ import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Link } from "react-router-dom";
-import logo_trello from "../Images/logo_trello.png";
-import perfil_trello from "../Images/perfil.png";
+import logo_header from "../Images/logo_header.png";
+import { Avatar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { deepOrange } from "@material-ui/core/colors";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  orange: {
+    color: theme.palette.getContrastText(deepOrange[500]),
+    backgroundColor: deepOrange[500],
+  },
+}));
 
 function Header() {
   const [token, setToken] = useState("");
@@ -18,8 +34,10 @@ function Header() {
     setToken(token);
   }, []);
 
+  const classes = useStyles();
+
   return (
-    <div className="boards">
+    <div className="header">
       <header className="cabecera">
         <div className="left">
           <div className="icons">
@@ -35,9 +53,8 @@ function Header() {
         </div>
 
         <div className="center">
-          <Link to="/header" className="logo_login">
-            Regístrese para crear una cuenta
-            <img src={logo_trello} alt="" />
+          <Link to="/boards" className="logo_header">
+            <img src={logo_header} alt="" />
           </Link>
         </div>
 
@@ -46,13 +63,13 @@ function Header() {
             <AddOutlinedIcon />
           </div>
           <div className="icons">
-            <AddOutlinedIcon />
+            <InfoOutlinedIcon />
           </div>
           <div className="icons">
             <NotificationsNoneOutlinedIcon />
           </div>
           <div className="icons_image">
-            <img src={perfil_trello} alt="" />
+            <Avatar className={classes.orange}>N</Avatar>
           </div>
         </div>
       </header>
