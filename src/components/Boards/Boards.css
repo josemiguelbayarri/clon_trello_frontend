@@ -29,15 +29,43 @@
 }
 
 .boards_left .icon_title2{
-   
+    font-size: 14px;
+    margin-bottom: 10px;
+} 
+
+.tablero_title{
+    margin-top: 50px;
+    color: #172b4d;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tableros{
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 193px;
+    height: 96px;
+    background-color: #388F50;
+    border-radius: 6px;
+    padding: .3em;
+}
+
+.tableros_title{
+    color: white;
+    margin: .3em;
 }
 
 .boards_center{
-    background-color: yellow;
+    background-color:#FAFBFC;
     flex: 0.5;
 }
 
 .boards_right{
-    background-color: red;
+    background-color:#FAFBFC;
     flex: 0.2;
+}
+
+.main_tableros{
+    
+    display: flex;
 }
