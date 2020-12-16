@@ -10,41 +10,88 @@
 
 .boards_left{
     background-color:#FAFBFC;
-    flex: 0.3;
+    width: 30%;
     color: #0079bf;
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
 }
 
 .caja_tablero{
     background-color: #e4f0f6;
     width: 60%;
     padding: .3em;
-    border-radius: 4px;
+    border-radius: 10px;
     height: 30px;
     margin-top: 50px;
     margin-right: 20px;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.caja_tablero2{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    padding: .3em;
+    border-radius: 10px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.equipos1{
+    width: 60%;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-top: 16px;
+    color: #5e6c84;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.equipos2{
+    height: 30px;
+    width: 60%;
+    margin-right: 20px;
+    color: #5e6c84;
+    display: flex;
+    align-items: center;
+    padding: .1em;
+}
+
+.equipos2:hover{
+    background-color: #e4f0f6;
+    cursor: pointer;
+    
+    border-radius: 10px;
+}
+
+.caja_tablero2:hover{
+    background-color: #e4f0f6;
+    cursor: pointer;
 }
 
 .boards_left .icon_title2{
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-left: .4em;
 } 
 
 .tablero_title{
-    margin-top: 50px;
     color: #172b4d;
     font-size: 16px;
     font-weight: 700;
+    margin-left: .4em;
 }
 
 .tableros{
     margin-top: 10px;
     margin-right: 10px;
-    width: 193px;
-    height: 96px;
+    width: 190px;
+    height: 90px;
     background-color: #388F50;
     border-radius: 6px;
     padding: .3em;
@@ -57,15 +104,38 @@
 
 .boards_center{
     background-color:#FAFBFC;
-    flex: 0.5;
+    width: 70%;
 }
 
-.boards_right{
-    background-color:#FAFBFC;
-    flex: 0.2;
-}
+
 
 .main_tableros{
-    
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.titulo_tableros{
     display: flex;
+    height: 28px;
+    margin-top: 55px;
+}
+
+.tablero_crear{
+    background-color: #F0F2F5 !important;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.tableros_title2{
+    color: #172b4d !important;
+    
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.tablero_crear:hover{
+    background-color: lightgray !important;
+    cursor: pointer;
 }
