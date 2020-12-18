@@ -40,6 +40,8 @@
     border-radius: 10px;
     height: 30px;
     margin-right: 20px;
+    margin-top: 10px;
+    color: #091e42;
 }
 
 .equipos1{
@@ -71,7 +73,7 @@
 }
 
 .caja_tablero2:hover{
-    background-color: #e4f0f6;
+    background-color: #F0F2F5;
     cursor: pointer;
 }
 

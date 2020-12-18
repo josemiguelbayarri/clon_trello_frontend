@@ -4,7 +4,8 @@ import "./Boards.css";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import { Modal } from "@material-ui/core";
+import ModalCenter from "../ModalCenter/ModalCenter";
+
 
 function Boards() {
   return (
@@ -41,16 +42,7 @@ function Boards() {
             <AddOutlinedIcon color="action" />
             <span className="tablero_title">Creación de Nuevo Tablero</span>
           </div>
-          <div className="tableros tablero_crear">
-            <h4 className="tableros_title2">Crear un nuevo tablero</h4>
-          </div>
-          {/* <Modal
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-          >
-            <h2 id="modal-title">My Title</h2>
-            <p id="modal-description">My Description</p>
-          </Modal> */}
+          <ModalCenter />
           <div className="titulo_tableros">
             <PersonOutlineOutlinedIcon color="action" />
             <span className="tablero_title">Tableros personales</span>
