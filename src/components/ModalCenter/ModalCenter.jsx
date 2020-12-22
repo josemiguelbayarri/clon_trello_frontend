@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Axios from "axios";
+import { useHistory } from "react-router-dom";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +33,38 @@ export default function TransitionsModal() {
     setOpen(false);
   };
 
-  const [color, setColor] = useState("AntiqueWhite");
+  const [color, setColor] = useState("");
+
+  const history = useHistory();
+
+  const [datos, setDatos] = useState({
+    name: "",
+    color: color,
+  });
+
+  const handleInputChange = (event) => {
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const board = {
+      name: datos.name,
+      color: datos.color,
+    };
+
+    Axios.post("http://localhost:3000/boards/create", board).then((res) => {
+      const board = res.data;
+      console.log("tablero creado: ", board);
+    });
+
+    setTimeout(() => {
+      /* history.push("/login"); */
+    }, 500);
+  };
 
   return (
     <div>
@@ -61,85 +94,93 @@ export default function TransitionsModal() {
             </p>
           </div> */}
           <div className="main_modal">
-            <div className="modal_general">
-              <div className="modal_izquierda" style={{ background: color }}>
-                <div className="margenes">
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Añadir título de tablero"
-                  />
-                  <p>Espacio de trabajo de Trello</p>
+            <form onSubmit={onSubmit}>
+              <div className="modal_general">
+                <div className="modal_izquierda" style={{ background: color }}>
+                  <div className="margenes">
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={handleInputChange}
+                      placeholder="Añadir título de tablero"
+                    />
+                    <input
+                      onChange={handleInputChange}
+                      type="hidden"
+                      name="color"
+                      defaultValue={color}
+                    />
+                    <p>Espacio de trabajo de Trello</p>
+                  </div>
+                </div>
+                <div className="modal_derecha">
+                  <div
+                    className="boton_1"
+                    onClick={() => {
+                      setColor("AntiqueWhite");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_2"
+                    onClick={() => {
+                      setColor("DarkOrchid");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_3"
+                    onClick={() => {
+                      setColor("orange");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_4"
+                    onClick={() => {
+                      setColor("YellowGreen");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_5"
+                    onClick={() => {
+                      setColor("purple");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_6"
+                    onClick={() => {
+                      setColor("pink");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_7"
+                    onClick={() => {
+                      setColor("yellow");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_8"
+                    onClick={() => {
+                      setColor("green");
+                    }}
+                  ></div>
+                  <div
+                    className="boton_9"
+                    onClick={() => {
+                      setColor("red");
+                    }}
+                  ></div>
                 </div>
               </div>
-              <div className="modal_derecha">
-                <button
-                  className="boton_1"
-                  onClick={() => {
-                    setColor("AntiqueWhite");
-                  }}
-                ></button>
-                <button
-                  className="boton_2"
-                  onClick={() => {
-                    setColor("DarkOrchid");
-                  }}
-                ></button>
-                <button
-                  className="boton_3"
-                  onClick={() => {
-                    setColor("orange");
-                  }}
-                ></button>
-                <button
-                  className="boton_4"
-                  onClick={() => {
-                    setColor("YellowGreen");
-                  }}
-                ></button>
-                <button
-                  className="boton_5"
-                  onClick={() => {
-                    setColor("purple");
-                  }}
-                ></button>
-                <button
-                  className="boton_6"
-                  onClick={() => {
-                    setColor("pink");
-                  }}
-                ></button>
-                <button
-                  className="boton_7"
-                  onClick={() => {
-                    setColor("yellow");
-                  }}
-                ></button>
-                <button
-                  className="boton_8"
-                  onClick={() => {
-                    setColor("green");
-                  }}
-                ></button>
-                <button
-                  className="boton_9"
-                  onClick={() => {
-                    setColor("red");
-                  }}
-                ></button>
+              <div className="submodal">
+                <div className="modal_abajo">
+                  <button type="submit">Crear tablero</button>
+                  <DashboardOutlinedIcon fontSize="small" />{" "}
+                  <span className="plantilla_crear">
+                    {" "}
+                    Empiece con una plantilla
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="submodal">
-              <div className="modal_abajo">
-                <button>Crear tablero</button>
-                <DashboardOutlinedIcon fontSize="small" />{" "}
-                <span className="plantilla_crear">
-                  {" "}
-                  Empiece con una plantilla
-                </span>
-              </div>
-            </div>
+            </form>
           </div>
         </Fade>
       </Modal>

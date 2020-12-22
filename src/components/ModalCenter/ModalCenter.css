@@ -55,6 +55,8 @@
     width: 96px;
     height: 96px;
     margin-left: 8px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
 }
 
 .modal_derecha button{
@@ -69,6 +71,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_2{
@@ -76,6 +80,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_3{
@@ -83,6 +89,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_4{
@@ -90,6 +98,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_5{
@@ -97,6 +107,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_6{
@@ -104,6 +116,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_7{
@@ -111,6 +125,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_8{
@@ -118,6 +134,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal_derecha .boton_9{
@@ -125,6 +143,8 @@
     box-shadow: none;
     border: none;
     border-radius: 3px;
+    width: 30px;
+    height: 30px;
 }
 
 .submodal{
