@@ -3,6 +3,10 @@
     height: 100vh;
 }
 
+.ancla_personal_board{
+    text-decoration: none;
+}
+
 .boards_general{
     display: flex;
     height: 93vh;
@@ -98,6 +102,13 @@
     border-radius: 6px;
     padding: .3em;
 }
+
+
+/* TERMINA EFECTO HOVER DE LOS TABLEROS */
+/* .tableros:hover{
+    background-color: white !important;
+    opacity: 0.4 !important;
+} */
 
 .tableros_title{
     color: white;

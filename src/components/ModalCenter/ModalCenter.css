@@ -3,10 +3,18 @@
     height: 144px;
 }
 
+.main_modal:focus{
+    outline: none;
+}
+
 .modal_general{
     width: 404px;
     height: 96px;
     display: flex;
+}
+
+input:focus{
+    outline: none;
 }
 
 .modal_izquierda{
@@ -26,7 +34,7 @@
     box-shadow: none;
     box-sizing: border-box;
     color: #fff;
-
+    border-radius: 4px;
     font-size: 16px;
     font-weight: 700;
     left: -8px;
