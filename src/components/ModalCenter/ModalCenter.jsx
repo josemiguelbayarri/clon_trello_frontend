@@ -33,7 +33,7 @@ export default function TransitionsModal() {
     setOpen(false);
   };
 
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("AntiqueWhite");
 
   const history = useHistory();
 
@@ -53,7 +53,7 @@ export default function TransitionsModal() {
     event.preventDefault();
     const board = {
       name: datos.name,
-      color: datos.color,
+      color: color,
     };
 
     Axios.post("http://localhost:3000/boards/create", board).then((res) => {
