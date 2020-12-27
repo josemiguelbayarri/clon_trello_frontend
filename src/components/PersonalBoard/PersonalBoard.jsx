@@ -24,7 +24,35 @@ function PersonalBoard() {
         className="personal_main"
         style={{ background: personalBoards?.color }}
       >
-        <h1>{personalBoards?.name}</h1>
+        <div className="personal_menu">
+          <div className="personal_menu_left">
+            <div className="personal_menu_buttons">
+              <p>Tablero</p>
+            </div>
+            <div className="personal_menu_buttons">
+              <h1>{personalBoards?.name}</h1>
+            </div>
+            <div className="personal_menu_buttons">
+              <p>estrella</p>
+            </div>
+            <div className="personal_menu_buttons">
+              <p>Espacio de trabajo de trello free</p>
+            </div>
+            <div className="personal_menu_buttons">
+              <p>Visible para el equipo</p>
+            </div>
+            <div className="personal_menu_buttons">
+              <p>icono</p>
+            </div>
+            <div className="personal_menu_buttons">
+              <p>invitar</p>
+            </div>
+          </div>
+          <div className="personal_menu_right">
+            <div className="personal_menu_buttons"><p>Butler</p></div>
+            <div className="personal_menu_buttons"><p>Mostrar menú</p></div>
+          </div>
+        </div>
       </div>
     </div>
   );

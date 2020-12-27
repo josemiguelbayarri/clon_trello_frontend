@@ -7,3 +7,30 @@
     height: 93vh;
     width: 100%;
 }
+
+.personal_menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.personal_menu_left, .personal_menu_right{
+    display: flex;
+}
+
+.personal_menu_buttons{
+    background-color: rgba(0,0,0,.08);
+    color: #172b4d;
+    margin: .5em;
+    padding: 2px 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.personal_menu_buttons:hover{
+    background-color: #ADAEAA;
+    cursor: pointer;
+    opacity: .5;
+    color: #172b4d;
+}
