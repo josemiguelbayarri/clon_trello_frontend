@@ -37,6 +37,8 @@ export default function TransitionsModal() {
 
   const history = useHistory();
 
+  const userId = localStorage.getItem("userId");
+
   const [datos, setDatos] = useState({
     name: "",
     color: color,
@@ -54,6 +56,7 @@ export default function TransitionsModal() {
     const board = {
       name: datos.name,
       color: color,
+      userId: userId,
     };
 
     Axios.post("http://localhost:3000/boards/create", board).then((res) => {

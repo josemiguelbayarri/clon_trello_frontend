@@ -9,10 +9,11 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 
 function Boards() {
+  const userId = localStorage.getItem("userId");
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
-    Axios.get(`http://localhost:3000/boards/4`).then((res) => {
+    Axios.get(`http://localhost:3000/boards/` + userId).then((res) => {
       const boards = res.data;
       setBoards(boards);
       console.log(boards);

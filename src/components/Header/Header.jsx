@@ -11,6 +11,8 @@ import logo_header from "../Images/logo_header.png";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,56 +27,73 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
-  const [token, setToken] = useState("");
+class Header extends React.Component {
+  /* const [token, setToken] = useState(""); */
 
-  useEffect(() => {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
+
+  /*  useEffect(() => {
     const token = localStorage.getItem("user");
     console.log("este es el token", token);
-    setToken(token);
-  }, []);
+    /* setToken(token); 
+  }, []); */
 
-  const classes = useStyles();
+  render() {
+    /* const classes = useStyles(); */
 
-  return (
-    <div className="header">
-      <header className="cabecera">
-        <div className="left">
-          <div className="icons">
-            <AppsIcon fontSize="small" />
-          </div>
-          <div className="icons">
-            <HomeOutlinedIcon fontSize="small" />
-          </div>
-          <div className="icons">
-            <DashboardOutlinedIcon fontSize="small" />
-            <span className="icon_title">Tableros</span>
-          </div>
-        </div>
+    const { match, location, history } = this.props;
 
-        <div className="center">
-          <Link to="/boards" className="logo_header">
-            <img src={logo_header} alt="" />
-          </Link>
-        </div>
+    const headerColor =
+      location.pathname === "/boards"
+        ? { background: "#026AA7" }
+        : { background: "rgba(1,1,1,0.1)"};
 
-        <div className="right">
-          <div className="icons">
-            <AddOutlinedIcon />
+    
+    return (
+      <div className="header">
+        <header className="cabecera" style={headerColor}>
+          <div className="left">
+            <div className="icons" style={headerColor}>
+              <AppsIcon fontSize="small" />
+            </div>
+            <div className="icons" style={headerColor}>
+              <HomeOutlinedIcon fontSize="small" />
+            </div>
+            <div className="icons" style={headerColor}>
+              <DashboardOutlinedIcon fontSize="small" />
+              <span className="icon_title">Tableros</span>
+            </div>
           </div>
-          <div className="icons">
-            <InfoOutlinedIcon />
+
+          <div className="center">
+            <Link to="/boards" className="logo_header">
+              <img src={logo_header} alt="" />
+            </Link>
           </div>
-          <div className="icons">
-            <NotificationsNoneOutlinedIcon />
+
+          <div className="right">
+            <div className="icons" style={headerColor}>
+              <AddOutlinedIcon />
+            </div>
+            <div className="icons" style={headerColor}>
+              <InfoOutlinedIcon />
+            </div>
+            <div className="icons" style={headerColor}>
+              <NotificationsNoneOutlinedIcon />
+            </div>
+            <div className="icons_image">
+              <Avatar>N</Avatar>
+            </div>
           </div>
-          <div className="icons_image">
-            <Avatar className={classes.orange}>N</Avatar>
-          </div>
-        </div>
-      </header>
-    </div>
-  );
+        </header>
+      </div>
+    );
+  }
 }
 
-export default Header;
+const AdaptiveHeader = withRouter(Header)
+export default AdaptiveHeader;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../Header/Header";
+import AdaptiveHeader from "../Header/Header";
 import "./PersonalBoard.css";
 import Axios from "axios";
 
@@ -19,11 +19,12 @@ function PersonalBoard() {
 
   return (
     <div className="personal_boards">
-      <Header />
+      
       <div
         className="personal_main"
         style={{ background: personalBoards?.color }}
       >
+        <AdaptiveHeader />
         <div className="personal_menu">
           <div className="personal_menu_left">
             <div className="personal_menu_buttons">

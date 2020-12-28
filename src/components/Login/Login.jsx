@@ -32,7 +32,7 @@ function Login() {
       const user = res.data.user;
       console.log("usuario logueado: ", user);
 
-      localStorage.setItem("user", user.name);
+      localStorage.setItem("userId", user.id);
       /* localStorage.setItem("email", user.email); */
 
       localStorage.setItem("authToken", res.data.token);
