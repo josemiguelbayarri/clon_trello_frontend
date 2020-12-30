@@ -28,9 +28,111 @@
     border-radius: 4px;
 }
 
+.personal_menu_buttons p {
+    margin: 0 5px;
+}
+
 .personal_menu_buttons:hover{
     background-color: #ADAEAA;
     cursor: pointer;
     opacity: .5;
     color: #172b4d;
 }
+
+.personal_menu_buttons_avatar{
+    background-color: none;
+    margin: .5em;
+    padding: 2px 2px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    
+}
+
+.personal_board_avatar:hover{
+    background-color: white;
+    opacity: .5;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.task_board{
+    display: flex;
+    
+}
+
+.task_board_object1{
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: 85vh;
+    background-color: chocolate;
+    
+}
+
+.task_board_object2{
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: 85vh;
+    background-color: yellow;
+}
+
+.task_board_object3{
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: 85vh;
+    background-color: red;
+}
+
+.task_board_object4{
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: 85vh;
+    background-color: pink;
+}
+
+.task_board_object5{
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: 85vh;
+    background-color: green;
+}
+
+
+
+
+
+
+/* EJEMPLO DRAGABLE */
+.example-parent {
+    border: 2px solid #DFA612;
+    color: black;
+    display: flex;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+  
+  .example-origin {
+    
+    padding: 10px;
+  }
+  
+  .example-draggable {
+    background-color: #4AAE9B;
+    font-weight: normal;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .example-dropzone {
+    background-color: #6DB65B;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+  }

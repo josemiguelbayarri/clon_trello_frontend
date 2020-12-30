@@ -53,6 +53,7 @@ export default function TransitionsModal() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    
     const board = {
       name: datos.name,
       color: color,
@@ -60,13 +61,10 @@ export default function TransitionsModal() {
     };
 
     Axios.post("http://localhost:3000/boards/create", board).then((res) => {
-      const board = res.data;
-      console.log("tablero creado: ", board);
+      const newBoard = res.data;
+      history.push("/board/" + newBoard.id);
+     /*  console.log("tablero creado: ", newBoard); */
     });
-
-    setTimeout(() => {
-      /* history.push("/login"); */
-    }, 500);
   };
 
   return (
