@@ -35,6 +35,8 @@ function Login() {
       localStorage.setItem("userId", user.id);
       /* localStorage.setItem("email", user.email); */
 
+      localStorage.setItem("name", user.name);
+
       localStorage.setItem("authToken", res.data.token);
 
       setTimeout(() => {

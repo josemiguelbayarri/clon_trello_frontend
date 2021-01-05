@@ -86,14 +86,14 @@ function PersonalBoard() {
             </div>
           </div>
         </div>
-
-        <div className="task_board">
-          <div className="task_board_object1" onDrag={(event) => {onDragStart(event);}}
-    id="draggable-1" 
-    
-    draggable="true">
-            draggable
+        <div className="task">
+          <div className="task_board">
+            <div className="task_board_object1" onDrag={(event) => {onDragStart(event);}} id="draggable-1" draggable="true">
+              draggable
           </div>
+        </div>
+        
+        <div className="task">
           <div className="task_board_object2" onDrag={(event) => {
             onDragStart(event);
           }}
@@ -106,6 +106,9 @@ function PersonalBoard() {
              id="dropzone" draggable="true">
                draggable
              </div>
+        </div>
+
+        <div className="task">
           <div className="task_board_object3" onDrag={(event) => {
             onDragStart(event);
           }}
@@ -118,6 +121,10 @@ function PersonalBoard() {
              id="dropzone" draggable="true">
                draggable
              </div>
+
+        </div>
+
+        <div className="task">
           <div className="task_board_object4" onDrag={(event) => {
             onDragStart(event);
           }}
@@ -130,6 +137,9 @@ function PersonalBoard() {
              id="dropzone" draggable="true">
                draggable
              </div>
+        </div>
+
+        <div className="task">
           <div className="task_board_object5" onDrag={(event) => {
             onDragStart(event);
           }}
@@ -142,7 +152,11 @@ function PersonalBoard() {
              id="dropzone" draggable="true">
                draggable
              </div>
+
         </div>
+
+
+      </div>
        
       </div>
     </div>

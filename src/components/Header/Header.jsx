@@ -14,21 +14,19 @@ import { deepOrange } from "@material-ui/core/colors";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-  orange: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
-  },
-}));
+
+
+
 
 class Header extends React.Component {
   /* const [token, setToken] = useState(""); */
+
+  constructor(props){
+    super(props)
+    this.state = {
+      firstLetter: ""
+    }
+  }
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -36,12 +34,18 @@ class Header extends React.Component {
     history: PropTypes.object.isRequired,
   };
 
-  /*  useEffect(() => {
-    const token = localStorage.getItem("user");
-    console.log("este es el token", token);
-    /* setToken(token); 
-  }, []); */
+  componentDidMount(){
+    const userName = localStorage.getItem("name");
+    const letter = userName.charAt(0).toUpperCase();
+    console.log(letter);
+    this.setState({ firstLetter: letter });
+    
+    console.log("setState", this.state.firstLetter)
+  };
 
+  
+
+  
   render() {
     /* const classes = useStyles(); */
 
@@ -86,7 +90,7 @@ class Header extends React.Component {
               <NotificationsNoneOutlinedIcon />
             </div>
             <div className="icons_image">
-              <Avatar>N</Avatar>
+              <Avatar>X</Avatar>
             </div>
           </div>
         </header>
