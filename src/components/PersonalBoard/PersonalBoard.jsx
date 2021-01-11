@@ -5,29 +5,9 @@ import "./PersonalBoard.css";
 import Axios from "axios";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
+import ModalBoard from "../ModalBoard/ModalBoard";
 import { Avatar } from "@material-ui/core";
-import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 
-function onDragStart(event) {
-  console.log("entrame hasta los huevos");
-  event.dataTransfer.setData("text/plain", event.target.id);
-
-  /* event.currentTarget.style.backgroundColor = "yellow"; */
-}
-
-function onDragOver(event) {
-  event.preventDefault();
-}
-
-function onDrop(event) {
-  event.preventDefault();
-  /* const id = event.dataTransfer.getData("text"); */
-
-  const draggableElement = document.getElementById("draggable-1");
-  const dropzone = event.target;
-  dropzone.appendChild(draggableElement);
-  event.dataTransfer.clearData();
-}
 
 function PersonalBoard() {
   const { id } = useParams();
@@ -49,6 +29,7 @@ function PersonalBoard() {
         style={{ background: personalBoards?.color }}
       >
         <AdaptiveHeader />
+
         <div className="personal_menu">
           <div className="personal_menu_left">
             <div className="personal_menu_buttons">
@@ -77,138 +58,25 @@ function PersonalBoard() {
             </div>
           </div>
           <div className="personal_menu_right">
-            <div className="personal_menu_buttons">
-              <p>Butler</p>
-            </div>
-            <div className="personal_menu_buttons">
-              <MoreHorizOutlinedIcon fontSize="small" />
-              <p>Mostrar menú</p>
-            </div>
+            <ModalBoard/>
+            
           </div>
         </div>
-        <div className="task">
-          <div className="task_board">
-            <div className="task_board_object1" onDrag={(event) => {onDragStart(event);}} id="draggable-1" draggable="true">
-              draggable
-          </div>
+
+        <div className="main_task">
+          <div className="task">soy el task uno</div>
+
+          <div className="task">soy el task dos</div>
+
+          <div className="task">soy el task tres</div>
+
+          <div className="task">soy el task cuatro</div>
+
+          <div className="task">soy el task cuatro</div>
         </div>
-        
-        <div className="task">
-          <div className="task_board_object2" onDrag={(event) => {
-            onDragStart(event);
-          }}
-            onDragOver={(event) => {
-              onDragOver(event);
-            }}
-            onDrop={(event) => {
-              onDrop(event);
-            }}
-             id="dropzone" draggable="true">
-               draggable
-             </div>
-        </div>
-
-        <div className="task">
-          <div className="task_board_object3" onDrag={(event) => {
-            onDragStart(event);
-          }}
-            onDragOver={(event) => {
-              onDragOver(event);
-            }}
-            onDrop={(event) => {
-              onDrop(event);
-            }}
-             id="dropzone" draggable="true">
-               draggable
-             </div>
-
-        </div>
-
-        <div className="task">
-          <div className="task_board_object4" onDrag={(event) => {
-            onDragStart(event);
-          }}
-            onDragOver={(event) => {
-              onDragOver(event);
-            }}
-            onDrop={(event) => {
-              onDrop(event);
-            }}
-             id="dropzone" draggable="true">
-               draggable
-             </div>
-        </div>
-
-        <div className="task">
-          <div className="task_board_object5" onDrag={(event) => {
-            onDragStart(event);
-          }}
-            onDragOver={(event) => {
-              onDragOver(event);
-            }}
-            onDrop={(event) => {
-              onDrop(event);
-            }}
-             id="dropzone" draggable="true">
-               draggable
-             </div>
-
-        </div>
-
-
-      </div>
-       
       </div>
     </div>
   );
 }
 
 export default PersonalBoard;
-
-
-{/* <div class="example-parent">
-<div class="example-origin">
-  <div onDrag={(event) => {onDragStart(event);}}
-    id="draggable-1" 
-    class="example-draggable"
-    draggable="true"
-  >
-    draggable
-  </div>
-</div>
-
-<div
-onDrag={(event) => {
-  onDragStart(event);
-}}
-  onDragOver={(event) => {
-    onDragOver(event);
-  }}
-  onDrop={(event) => {
-    onDrop(event);
-  }}
-  class="example-dropzone" id="dropzone" draggable="true"
->
-  <div onDrag={(event) => {onDragStart(event);}}
-    id="draggable-1"
-    class="example-draggable"
-    draggable="true"
-  >
-    draggable
-  </div>
-</div>
-<div
-onDrag={(event) => {
-  onDragStart(event);
-}}
-  onDragOver={(event) => {
-    onDragOver(event);
-  }}
-  onDrop={(event) => {
-    onDrop(event);
-  }}
-  class="example-dropzone" id="dropzone" draggable="true"
->
-  dropzone{" "}
-</div>
-</div> */}

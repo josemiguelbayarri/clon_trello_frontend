@@ -14,11 +14,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "flex-start",
     justifyContent: "center",
     marginTop: "60px",
-  },
-  paper: {
-    backgroundColor: "transparent",
-    padding: theme.spacing(2, 4, 3),
-  },
+  }
 }));
 
 export default function TransitionsModal() {
@@ -53,7 +49,7 @@ export default function TransitionsModal() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    
+
     const board = {
       name: datos.name,
       color: color,
@@ -63,7 +59,7 @@ export default function TransitionsModal() {
     Axios.post("http://localhost:3000/boards/create", board).then((res) => {
       const newBoard = res.data;
       history.push("/board/" + newBoard.id);
-     /*  console.log("tablero creado: ", newBoard); */
+      /*  console.log("tablero creado: ", newBoard); */
     });
   };
 
@@ -88,12 +84,6 @@ export default function TransitionsModal() {
         }}
       >
         <Fade in={open}>
-          {/* <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
-          </div> */}
           <div className="main_modal">
             <form onSubmit={onSubmit}>
               <div className="modal_general">

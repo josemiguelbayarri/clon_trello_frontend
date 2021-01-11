@@ -15,6 +15,7 @@
 
 .personal_menu_left, .personal_menu_right{
     display: flex;
+    
 }
 
 .personal_menu_buttons{
@@ -57,88 +58,15 @@
     cursor: pointer;
 }
 
+.main_task{
+    display: flex;
+    width: 100%;
+}
+
 .task{
     width: 20%;
-    display: flex;
+    height: 80vh;
+    border: 1px solid black;
+    margin: 1em 1em 0 1em;
 }
 
-.task_board{
-    width: 100%;
-    display: flex;
-    
-}
-
-.task_board_object1{
-    justify-content: center;
-    display: flex;
-    
-    height: 85vh;
-    background-color: chocolate;
-    
-}
-
-.task_board_object2{
-    justify-content: center;
-    display: flex;
-    
-    height: 85vh;
-    background-color: yellow;
-}
-
-.task_board_object3{
-    justify-content: center;
-    display: flex;
-    
-    height: 85vh;
-    background-color: red;
-}
-
-.task_board_object4{
-    justify-content: center;
-    display: flex;
-    
-    height: 85vh;
-    background-color: pink;
-}
-
-.task_board_object5{
-    justify-content: center;
-    display: flex;
-    
-    height: 85vh;
-    background-color: green;
-}
-
-
-
-
-
-
-/* EJEMPLO DRAGABLE */
-.example-parent {
-    border: 2px solid #DFA612;
-    color: black;
-    display: flex;
-    font-family: sans-serif;
-    font-weight: bold;
-  }
-  
-  .example-origin {
-    
-    padding: 10px;
-  }
-  
-  .example-draggable {
-    background-color: #4AAE9B;
-    font-weight: normal;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-  }
-  
-  .example-dropzone {
-    background-color: #6DB65B;
-    width: 100px;
-    height: 100px;
-    padding: 10px;
-  }
