@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import "./ModalBoard.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,9 +31,9 @@ export default function TransitionsModal() {
     setOpen(false);
   };
 
-  const history = useHistory();
+  const { id } = useParams();
 
-  const userId = localStorage.getItem("userId");
+  /* const userId = localStorage.getItem("userId"); */
 
   const [datos, setDatos] = useState({
     name: "",
@@ -49,16 +49,16 @@ export default function TransitionsModal() {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    const board = {
+    const plank = {
       name: datos.name,
-
-      userId: userId,
+      boardId: id,
+      /* userId: userId, */
     };
 
-    Axios.post("http://localhost:3000/boards/create", board).then((res) => {
-      const newBoard = res.data;
-      history.push("/board/" + newBoard.id);
-      /*  console.log("tablero creado: ", newBoard); */
+    Axios.post("http://localhost:3000/planks/create", plank).then((res) => {
+      const newPlank = res.data;
+      handleClose();
+      console.log("lista creada: ", newPlank);
     });
   };
 
@@ -85,15 +85,20 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className="modal_board">
-            <input
-              type="text"
-              name=""
-              placeholder="Introduzca el título de la lista..."
-            />
-            <div className="modal_button">
-              <button type="submit">Añadir lista</button>
-              <span onClick={handleClose}><CloseOutlinedIcon fontSize="medium" /></span>
-            </div>
+            <form onSubmit={onSubmit}>
+              <input
+                onChange={handleInputChange}
+                type="text"
+                name="name"
+                placeholder="Introduzca el título de la lista..."
+              />
+              <div className="modal_button">
+                <button type="submit">Añadir lista</button>
+                <span onClick={handleClose}>
+                  <CloseOutlinedIcon fontSize="medium" />
+                </span>
+              </div>
+            </form>
           </div>
         </Fade>
       </Modal>

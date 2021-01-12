@@ -7,18 +7,26 @@ import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
 import ModalBoard from "../ModalBoard/ModalBoard";
 import { Avatar } from "@material-ui/core";
-
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 
 function PersonalBoard() {
   const { id } = useParams();
 
   const [personalBoards, setPersonalBoards] = useState("");
 
+  const [personalPlanks, setPersonalPlanks] = useState([]);
+
   useEffect(() => {
     Axios.get(`http://localhost:3000/boards/board/` + id).then((res) => {
       const personalBoards = res.data;
       setPersonalBoards(personalBoards);
       console.log(personalBoards);
+    });
+    Axios.get(`http://localhost:3000/planks/` + id).then((res) => {
+      const personalPlanks = res.data;
+      setPersonalPlanks(personalPlanks);
+      console.log("soy una lista preciosa" + personalPlanks);
     });
   }, []);
 
@@ -58,21 +66,26 @@ function PersonalBoard() {
             </div>
           </div>
           <div className="personal_menu_right">
-            <ModalBoard/>
-            
+            <ModalBoard />
           </div>
         </div>
 
-        <div className="main_task">
-          <div className="task">soy el task uno</div>
+        <div className="main_plank">
+          {personalPlanks?.map((plank) => (
+            <div className="plank">
+              <div className="plank_div">
+                <h2 className="plank_name">{plank.name}</h2>
+                <span>x</span>
+              </div>
 
-          <div className="task">soy el task dos</div>
-
-          <div className="task">soy el task tres</div>
-
-          <div className="task">soy el task cuatro</div>
-
-          <div className="task">soy el task cuatro</div>
+              <div className="task_button">
+                <button type="submit">
+                  <AddOutlinedIcon fontSize="medium" />
+                  Añada otra tarjeta
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
