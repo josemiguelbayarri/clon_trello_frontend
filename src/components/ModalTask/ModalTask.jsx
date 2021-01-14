@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import "./ModalBoard.css";
+import "./ModalTask.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -8,14 +8,13 @@ import Fade from "@material-ui/core/Fade";
 import Axios from "axios";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+import { util } from "../../util";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
-    marginTop: "100px",
-    marginRight: "8px",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));
 
@@ -46,27 +45,32 @@ export default function TransitionsModal() {
     });
   };
 
-  const onSubmit = (event) => {
+  /* const onSubmit = (event) => {
     event.preventDefault();
 
     const plank = {
       name: datos.name,
       boardId: id,
-      /* userId: userId, */
+      /* userId: userId, 
     };
 
-    Axios.post("http://localhost:3000/planks/create", plank).then((res) => {
-      const newPlank = res.data;
+    Axios.post("http://localhost:3000/tasks/create", task).then((res) => {
+      const newTask = res.data;
+      util.arrayPlanks.concat(newTask);
+      console.log(newTask);
+      console.log(util.arrayPlanks);
       handleClose();
-      console.log("lista creada: ", newPlank);
+      console.log("lista creada: ", newTask);
     });
-  };
+  }; */
 
   return (
     <div>
-      <div onClick={handleOpen} className="modal_board_button">
-        <AddOutlinedIcon fontSize="small" />
-        <p>Añada otra lista</p>
+      <div onClick={handleOpen} className="task_button">
+        <button type="submit">
+          <AddOutlinedIcon fontSize="medium" />
+          Añada otra tarjeta
+        </button>
       </div>
 
       <Modal
@@ -84,16 +88,16 @@ export default function TransitionsModal() {
         }}
       >
         <Fade in={open}>
-          <div className="modal_board">
-            <form onSubmit={onSubmit}>
+          <div className="modal_board_task">
+            <form>
               <input
                 onChange={handleInputChange}
                 type="text"
                 name="name"
-                placeholder="Introduzca el título de la lista..."
+                placeholder="Introduzca un título para esta tarjeta..."
               />
               <div className="modal_button">
-                <button type="submit">Añadir lista</button>
+                <button type="submit">Añadir tarjeta</button>
                 <span onClick={handleClose}>
                   <CloseOutlinedIcon fontSize="medium" />
                 </span>

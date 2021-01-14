@@ -21,12 +21,6 @@ import { withRouter } from "react-router";
 class Header extends React.Component {
   /* const [token, setToken] = useState(""); */
 
-  constructor(props){
-    super(props)
-    this.state = {
-      firstLetter: ""
-    }
-  }
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -34,20 +28,17 @@ class Header extends React.Component {
     history: PropTypes.object.isRequired,
   };
 
-  componentDidMount(){
-    const userName = localStorage.getItem("name");
-    const letter = userName.charAt(0).toUpperCase();
-    console.log(letter);
-    this.setState({ firstLetter: letter });
-    
-    console.log("setState", this.state.firstLetter)
-  };
+  
 
   
 
   
   render() {
     /* const classes = useStyles(); */
+    const nickLogged = localStorage.getItem("name");
+
+
+
 
     const { match, location, history } = this.props;
 
@@ -90,7 +81,7 @@ class Header extends React.Component {
               <NotificationsNoneOutlinedIcon />
             </div>
             <div className="icons_image">
-              <Avatar>X</Avatar>
+              <Avatar>{nickLogged.charAt(0)}</Avatar>
             </div>
           </div>
         </header>

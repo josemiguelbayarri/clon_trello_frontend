@@ -16,14 +16,13 @@
 .personal_menu_left,
 .personal_menu_right {
     display: flex;
-
 }
 
 .personal_menu_buttons {
     background-color: rgba(0, 0, 0, .08);
     color: #172b4d;
     margin: .5em;
-    padding: 2px 5px;
+    padding: .1em .5em .1em .5em;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -81,6 +80,7 @@
 }
 
 .plank_div span{
+    margin-top: 5px;
     margin-right: 8px;
     font-size: 18px;
     color: #172b4d;
@@ -125,5 +125,38 @@
 
 .task_button span{
     color: #5e6c84;
+}
+
+.new_plank{
+    background-color: rgba(0, 0, 0, .08);
+    color: #172b4d;
+    margin: .5em;
+    padding: .1em .5em .1em .5em;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.new_plank input{
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #172b4d;
+}
+
+.new_plank input:focus{
+    outline: thin dotted; 
+    border-radius: 3px;
+}
+
+.new_plank button{
+    outline: none;
+    background-color: transparent;
+    margin: 5px;
+    color: #172b4d;
+    cursor: pointer;
+    border: none;
 }
 
