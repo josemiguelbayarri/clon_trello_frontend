@@ -13,14 +13,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
+import { useHistory } from "react-router-dom";
 
 
 
-
+const logout = () => {
+  
+    localStorage.removeItem("authToken");
+    
+}
 
 class Header extends React.Component {
   /* const [token, setToken] = useState(""); */
-
+  
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -29,7 +34,7 @@ class Header extends React.Component {
   };
 
   
-
+  
   
 
   
@@ -82,6 +87,9 @@ class Header extends React.Component {
             </div>
             <div className="icons_image">
               <Avatar>{nickLogged.charAt(0)}</Avatar>
+            </div>
+            <div className="logout">
+              <button onClick={() => logout()}>salir</button>
             </div>
           </div>
         </header>

@@ -45,27 +45,25 @@ export default function TransitionsModal() {
     });
   };
 
-  /* const onSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
-    const plank = {
-      name: datos.name,
-      boardId: id,
-      /* userId: userId, 
+    const task = {
+      description: datos.description,
+      plankId: id, 
     };
 
     Axios.post("http://localhost:3000/tasks/create", task).then((res) => {
       const newTask = res.data;
-      util.arrayPlanks.concat(newTask);
-      console.log(newTask);
-      console.log(util.arrayPlanks);
+      
+      
       handleClose();
-      console.log("lista creada: ", newTask);
+      console.log("tarea creada: ", newTask);
     });
-  }; */
+  };
 
   return (
-    <div>
+    <>
       <div onClick={handleOpen} className="task_button">
         <button type="submit">
           <AddOutlinedIcon fontSize="medium" />
@@ -89,7 +87,7 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className="modal_board_task">
-            <form>
+            <form onSubmit={onSubmit}>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -106,6 +104,6 @@ export default function TransitionsModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

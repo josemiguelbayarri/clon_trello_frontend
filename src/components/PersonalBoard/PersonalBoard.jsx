@@ -11,16 +11,22 @@ import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import { util } from "../../util";
 
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+
 function PersonalBoard() {
   const { id } = useParams();
   const [personalBoards, setPersonalBoards] = useState("");
   const [newPlank, setNewPlank] = useState("");
   const [personalPlanks, setPersonalPlanks] = useState([]);
+  const [tasks, setTasks] = useState([]);
   
+    
 
   const nickLogged = localStorage.getItem("name");
   /* console.log(nameLogged); */
-  
 
   useEffect(() => {
     Axios.get(`http://localhost:3000/boards/board/` + id).then((res) => {
@@ -30,11 +36,13 @@ function PersonalBoard() {
     });
     Axios.get(`http://localhost:3000/planks/` + id).then((res) => {
       const planks = res.data;
-      /* util.arrayPlanks = personalPlanks; */
-      /* console.log(personalPlanks);
-      console.log(util.arrayPlanks); */
       setPersonalPlanks(planks);
       console.log("soy una lista preciosa" + personalPlanks);
+    });
+    Axios.get(`http://localhost:3000/tasks/` + personalPlanks.id).then((res) => {
+      const tasks = res.data;
+      setTasks(tasks);
+      console.log("soy una tarea preciosa" + tasks);
     });
   }, []);
 
@@ -45,10 +53,10 @@ function PersonalBoard() {
         return plank.id !== id; 
       });
       console.log(personalPlanks); */
-       
-        const newPlanks = personalPlanks.filter(item => item.id !== id)
-        setPersonalPlanks(newPlanks);
-        console.log(newPlanks);    
+
+      const newPlanks = personalPlanks.filter((item) => item.id !== id);
+      setPersonalPlanks(newPlanks);
+      console.log(newPlanks);
       console.log("la lista a sido eliminada" + plank);
     });
   };
@@ -67,9 +75,9 @@ function PersonalBoard() {
   const keyPressed = ({ key }) => {
     // Capture search on Enter key
     if (key === "Enter") {
-      onSubmit()
+      onSubmit();
     }
-  }
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -86,6 +94,42 @@ function PersonalBoard() {
       console.log("lista creada: ", newPlank);
       setPersonalPlanks((personalPlanks) => personalPlanks.concat(newPlank));
     });
+  };
+
+  const useStyles = makeStyles((theme) => ({
+    modal: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  }));
+
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const onSubmit2 = (event) => {
+    event.preventDefault();
+
+    const task = {
+      description: datos.description,
+      plankId: personalPlanks.id, 
+    };
+
+    Axios.post("http://localhost:3000/tasks/create", task).then((res) => {
+      const newTask = res.data;
+      handleClose();
+      console.log("tarea creada: ", newTask);
+    });
+    
   };
 
   return (
@@ -125,18 +169,19 @@ function PersonalBoard() {
           </div>
           <div className="personal_menu_right">
             <form onSubmit={onSubmit}>
-            <div className="new_plank">
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="name"
-                required
-                placeholder="Introduzca el título de la lista..."
-                onKeyPress = {keyPressed}
-              />
-              
-                <button type="submit"><AddOutlinedIcon fontSize="large" /></button>
+              <div className="new_plank">
+                <input
+                  onChange={handleInputChange}
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Introduzca el título de la lista..."
+                  onKeyPress={keyPressed}
+                />
 
+                <button type="submit">
+                  <AddOutlinedIcon fontSize="large" />
+                </button>
               </div>
             </form>
           </div>
@@ -145,11 +190,54 @@ function PersonalBoard() {
         <div className="main_plank">
           {personalPlanks?.map((plank) => (
             <div className="plank" key={plank.id}>
+              
               <div className="plank_div">
                 <h2 className="plank_name">{plank.name}</h2>
                 <span onClick={() => deletePlank(plank.id)}>
                   <CloseOutlinedIcon fontSize="small" />
                 </span>
+              </div>
+              <div className="modal_board_button">
+                <div onClick={handleOpen} className="task_button">
+                  <button type="submit">
+                    <AddOutlinedIcon fontSize="medium" />
+                    Añada otra tarjeta
+                  </button>
+                </div>
+
+                <Modal
+                  disableEnforceFocus
+                  disableAutoFocus
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  className={classes.modal}
+                  open={open}
+                  onClose={handleClose}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={open}>
+                    <div className="modal_board_task">
+                      <form onSubmit={onSubmit2}>
+                        <input
+                          onChange={handleInputChange}
+                          type="text"
+                          name="description"
+                          placeholder="Introduzca un título para esta tarjeta..."
+                        />
+                        <div className="modal_button">
+                          <button type="submit">Añadir tarjeta</button>
+                          <span onClick={handleClose}>
+                            <CloseOutlinedIcon fontSize="medium" />
+                          </span>
+                        </div>
+                      </form>
+                    </div>
+                  </Fade>
+                </Modal>
               </div>
             </div>
           ))}
