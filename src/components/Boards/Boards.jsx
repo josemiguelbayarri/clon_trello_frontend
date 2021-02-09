@@ -8,14 +8,14 @@ import ModalCenter from "../ModalCenter/ModalCenter";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 
-function Boards() {
-  const userId = localStorage.getItem("userId");
-  const [boards, setBoards] = useState([]);
+function Boards() {//función boards
+  const userId = localStorage.getItem("userId");//guardamos en una variable llamada userId el userId que cogemos del localStorage
+  const [boards, setBoards] = useState([]);//y aqui es donde se guardan los boards
 
-  useEffect(() => {
-    Axios.get(`http://localhost:3000/boards/` + userId).then((res) => {
-      const boards = res.data;
-      setBoards(boards);
+  useEffect(() => {//cuando carga la pagina se hace automaticamente esta funcion mediante el useEffect
+     Axios.get(`http://localhost:3000/boards/`+ userId).then((res) => {//hacemos un llamado al endpoint del backend y le pasamos el id de usuario para que nos devuelva todas las boards que tiene ese usuario
+      const boards = res.data;//lo que sacas de hacer la peticion del endpoint
+      setBoards(boards);// y lo guardas en la variable que se muestra en el usestate de arriba
       console.log(boards);
     });
   }, []);
@@ -61,28 +61,13 @@ function Boards() {
           </div>
 
           <div className="main_tableros">
-            {boards?.map((board) => (
+            {boards?.map((board) => (//hacemos un mapeo de todas las boards para que se vayan pintando 
               <Link className="ancla_personal_board" to={"/board/" + board.id}>
                 <div className="tableros" style={{ background: board.color }}>
                   <h4 className="tableros_title">{board.name}</h4>
                 </div>
               </Link>
             ))}
-            {/* <div className="tableros">
-              <h4 className="tableros_title">Web Development</h4>
-            </div>
-            <div className="tableros">
-              <h4 className="tableros_title">Web Development</h4>
-            </div>
-            <div className="tableros">
-              <h4 className="tableros_title">Web Development</h4>
-            </div>
-            <div className="tableros">
-              <h4 className="tableros_title">Web Development</h4>
-            </div>
-            <div className="tableros">
-              <h4 className="tableros_title">Web Development</h4>
-            </div> */}
           </div>
         </div>
       </div>

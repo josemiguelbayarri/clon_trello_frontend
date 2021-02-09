@@ -7,28 +7,28 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 function Login() {
-  const history = useHistory();
+  const history = useHistory(); //guadamos en la variable history la funcion useHistory
 
-  const [datos, setDatos] = useState({
+  const [datos, setDatos] = useState({ //creamos el espacio para guardar los datos que escribimos en el formulario
     email: "",
     password: "",
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event) => {//mediante el evento onchange de abajo capturamos los cambios para meterlos arriba
     setDatos({
-      ...datos,
+      ...datos,//coge los datos que ya habia antes y los sobreescribe
       [event.target.name]: event.target.value,
     });
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const credentials = {
+    const credentials = {//los datos que le pasamos por el formulario
       email: datos.email,
       password: datos.password,
     };
     console.log("estas son las credenciales", credentials);
-    Axios.post("http://localhost:3000/users/login", credentials).then((res) => {
+    Axios.post("http://localhost:3000/users/login", credentials).then((res) => {//el endpoint del backend del login
       const user = res.data.user;
       console.log("usuario logueado: ", user);
 

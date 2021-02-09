@@ -8,7 +8,7 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({ //creamos la funcion flecha  useStyles con los estilos del modal
   modal: {
     display: "flex",
     alignItems: "flex-start",
@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransitionsModal() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const classes = useStyles();//guardamos esa funcion flecha en la variable classes
+
+  // FUNCIONALIDAD DEL MODAL
+  const [open, setOpen] = React.useState(false); 
 
   const handleOpen = () => {
     setOpen(true);
@@ -28,20 +30,22 @@ export default function TransitionsModal() {
   const handleClose = () => {
     setOpen(false);
   };
+  //HASTA AQUI
 
-  const [color, setColor] = useState("AntiqueWhite");
+
+  const [color, setColor] = useState("AntiqueWhite");//PARA CAMBIAR EL COLOR DEL MODAL
 
   const history = useHistory();
 
   const userId = localStorage.getItem("userId");
 
-  const [datos, setDatos] = useState({
+  const [datos, setDatos] = useState({//aqui capturamos los datos de nombre y color y lo pasamos arrriba mediante setcolor
     name: "",
     color: color,
   });
 
-  const handleInputChange = (event) => {
-    setDatos({
+  const handleInputChange = (event) => {//capturamos los datos que le pasamos en el formulario
+    setDatos({//y se los pasamos a set datos en la linea 42
       ...datos,
       [event.target.name]: event.target.value,
     });
@@ -50,13 +54,13 @@ export default function TransitionsModal() {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    const board = {
+    const board = { //estos datos los pasamos al endpoint para entrar en ese board
       name: datos.name,
       color: color,
       userId: userId,
     };
 
-    Axios.post("http://localhost:3000/boards/create", board).then((res) => {
+    Axios.post("http://localhost:3000/boards/create", board).then((res) => {//endpoint del backend para crear boards mas board creado para acceder a el con una redireccion
       const newBoard = res.data;
       history.push("/board/" + newBoard.id);
       /*  console.log("tablero creado: ", newBoard); */
@@ -74,7 +78,7 @@ export default function TransitionsModal() {
         disableAutoFocus
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className={classes.modal} /* aqui es donde pasamos la variable classes con los estilos de la funcion flecha */
         open={open}
         onClose={handleClose}
         closeAfterTransition

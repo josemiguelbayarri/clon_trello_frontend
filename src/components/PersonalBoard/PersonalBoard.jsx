@@ -22,6 +22,7 @@ function PersonalBoard() {
   const [newPlank, setNewPlank] = useState("");
   const [personalPlanks, setPersonalPlanks] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [plank, setPlank] = useState("");
   
     
 
@@ -39,7 +40,7 @@ function PersonalBoard() {
       setPersonalPlanks(planks);
       console.log("soy una lista preciosa" + personalPlanks);
     });
-    Axios.get(`http://localhost:3000/tasks/` + personalPlanks.id).then((res) => {
+    Axios.get(`http://localhost:3000/tasks/` + plank.id).then((res) => {
       const tasks = res.data;
       setTasks(tasks);
       console.log("soy una tarea preciosa" + tasks);

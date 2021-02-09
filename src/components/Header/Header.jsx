@@ -13,21 +13,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
-import { useHistory } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 
 
 
-const logout = () => {
+const logout = () => {//funcion logout para quitar el usuario
   
-    localStorage.removeItem("authToken");
-    
+  localStorage.removeItem("authToken");//eliminamos el token del localstorage cuando ejecutamos la funcion logout
+  
 }
 
 class Header extends React.Component {
   /* const [token, setToken] = useState(""); */
   
-
-  static propTypes = {
+  
+  static propTypes = {//esto pertenecio al header reactivo que lo saque de stackoverflow
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -40,17 +40,17 @@ class Header extends React.Component {
   
   render() {
     /* const classes = useStyles(); */
-    const nickLogged = localStorage.getItem("name");
+    const nickLogged = localStorage.getItem("name");//cogemos la propiedad name de localstorage y la guardamos dentro de la variable nicklogged que la usaremos en el html
 
 
 
 
     const { match, location, history } = this.props;
 
-    const headerColor =
-      location.pathname === "/boards"
-        ? { background: "#026AA7" }
-        : { background: "rgba(1,1,1,0.1)"};
+    const headerColor = //en esta variable le pasamos una ruta
+      location.pathname === "/boards" //que es esta y le indicamos que si estamos en esta ruta
+        ? { background: "#026AA7" } //el background del header sea este 
+        : { background: "rgba(1,1,1,0.1)"};//y si no que sea este otro
 
     
     return (
@@ -86,10 +86,10 @@ class Header extends React.Component {
               <NotificationsNoneOutlinedIcon />
             </div>
             <div className="icons_image">
-              <Avatar>{nickLogged.charAt(0)}</Avatar>
+              <Avatar>{nickLogged.charAt(0)}</Avatar> {/* dentro del avatar a nicklogged le pasamos la propiedad charAt en la poscicion 0 para coger la primera letra del nombre del usuario y pintarla */}
             </div>
             <div className="logout">
-              <button onClick={() => logout()}>salir</button>
+              <button onClick={() => logout()}><Link to="/">salir</Link></button> {/* aqui ejecutamos la funcion logout con un evento onClick que redirije auromaticamente fuera con el link to */}
             </div>
           </div>
         </header>
@@ -98,5 +98,5 @@ class Header extends React.Component {
   }
 }
 
-const AdaptiveHeader = withRouter(Header)
+const AdaptiveHeader = withRouter(Header)//parte de la funcionalidad del header reactivo
 export default AdaptiveHeader;
